@@ -1,8 +1,18 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 using Bogus;
+
+
+//static void Main(string[] args) => BenchmarkSwitcher.FromAssembly(typeof(SerializerMethods).Assembly).Run(args, new DebugInProcessConfig());
+/*
+static void Main(string[] args)
+{
+    var sumary = BenchmarkRunner.Run<SerializerMethods>();
+}
+*/
 
 BenchmarkRunner.Run(typeof(SerializerMethods).Assembly);
 
@@ -46,6 +56,7 @@ public class SerializerMethods
         _memoryStream.SetLength(0);
         _jsonWriter.Reset();
     }
+    
 }
 
 [JsonSerializable(typeof(Pessoa[]))]
